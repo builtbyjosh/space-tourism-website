@@ -16,6 +16,11 @@ const theme = extendTheme({
     h4: "32px",
     h5: "28px",
   },
+  colors: {
+    primary: "#0B0D17",
+    secondary: "#D0D6F9",
+    tertiary: "#ffffff",
+  },
 });
 
 export default theme;
