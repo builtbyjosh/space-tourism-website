@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import data from "../data.json";
 
 const SpaceContext = createContext();
@@ -6,34 +6,26 @@ const SpaceContext = createContext();
 export const useSpaceContext = () => useContext(SpaceContext);
 
 export const SpaceProvider = ({ children }) => {
-  const [collection, setCollection] = useState(null);
-  const [itemData, setItemData] = useState();
-  const [activeDestination, setActiveDestination] = useState("Moon");
+  const [collection, setCollection] = useState("home");
+  const [collectionData, setCollectionData] = useState([]);
+  const [collectionIndex, setCollectionIndex] = useState(0);
 
-  const getDataByName = (itemName) => {
+  useEffect(() => {
     if (data[collection]) {
       const items = data[collection];
-      console.log("COLLECTION ITEMS: ", items);
-      const foundItem = items.find((item) => item.name === itemName);
-      if (foundItem) {
-        setItemData(foundItem);
-      } else {
-        setItemData(null);
-      }
+      setCollectionData(items);
+      setCollectionIndex(0);
     }
-  };
-  console.log("COLLECTION: ", collection);
-  console.log("DESTINATION: ", activeDestination);
-  console.log("ITEM DATA: ", itemData);
+  }, [collection]);
+
   return (
     <SpaceContext.Provider
       value={{
-        getDataByName,
         collection,
         setCollection,
-        itemData,
-        activeDestination,
-        setActiveDestination,
+        collectionData,
+        collectionIndex,
+        setCollectionIndex,
       }}
     >
       {children}
