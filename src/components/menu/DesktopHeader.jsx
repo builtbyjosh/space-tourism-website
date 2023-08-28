@@ -16,10 +16,10 @@ const DesktopHeader = () => {
           backdropBlur="6px"
         >
           <Stack direction={"row"} align="center" justify="center">
-            <MenuLink step={"00"} name={"HOME"} />
-            <MenuLink step={"01"} name={"DESTINATION"} />
-            <MenuLink step={"02"} name={"CREW"} />
-            <MenuLink step={"04"} name={"TECHNOLOGY"} />
+            <MenuLink step={"00"} name={"home"} />
+            <MenuLink step={"01"} name={"destination"} />
+            <MenuLink step={"02"} name={"crew"} />
+            <MenuLink step={"04"} name={"technology"} />
           </Stack>
         </Box>
       </Stack>
