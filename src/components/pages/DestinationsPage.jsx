@@ -1,29 +1,41 @@
 import { useState, useEffect } from "react";
-import data from "../../data.json";
-import { Box, Text, Heading, Image } from "@chakra-ui/react";
+import { Box, Text, Stack, Divider, Heading, Image } from "@chakra-ui/react";
+import DestinationLink from "../menu/DestinationLink";
+import { useSpaceContext } from "../../context/SpaceContext";
 
 const DestinationsPage = () => {
-  const destinations = data.destinations;
-  const [destination, setDestination] = useState();
-  const getDestinationsByName = (name) => {
-    setDestination(
-      destinations.find((destination) => destination.name === name)
-    );
-  };
+  const { getDataByName, itemData, activeDestination } = useSpaceContext();
 
   useEffect(() => {
-    getDestinationsByName("Moon");
-  }, []);
-  console.log("DESTINATION DATA: ", destination);
+    getDataByName(activeDestination);
+  }, [activeDestination]);
+
+  console.log("DESTINATION DATA: ", itemData);
+
   return (
     <Box>
-      {destination && (
-        <>
-          <Text>{destination.name}</Text>
-          <Text>{destination.description}</Text>
-          <Text>{destination.distance}</Text>
-          <Text>{destination.travel}</Text>
-        </>
+      <Stack direction={"row"}>
+        <DestinationLink text={"Moon"} />
+        <DestinationLink text={"Mars"} />
+        <DestinationLink text={"Europa"} />
+        <DestinationLink text={"Titan"} />
+      </Stack>
+      {itemData && (
+        <Stack direction={"column"}>
+          <Heading as={"h2"}>{itemData.name}</Heading>
+          <Text>{itemData.description}</Text>
+          <Divider />
+          <Stack direction={"row"}>
+            <Stack>
+              <Text>AVG. DISTANCE</Text>
+              <Heading as={"h5"}>{itemData.distance}</Heading>
+            </Stack>
+            <Stack>
+              <Text>EST. TRAVEL TIME</Text>
+              <Heading as={"h5"}>{itemData.travel}</Heading>
+            </Stack>
+          </Stack>
+        </Stack>
       )}
     </Box>
   );
