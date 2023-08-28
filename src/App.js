@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import DesktopHeader from "./components/menu/DesktopHeader";
 import HomePage from "./components/pages/HomePage";
 import DesktopBG from "./assets/home/background-home-desktop.jpg";
@@ -12,7 +12,7 @@ function App() {
   return (
     <Box bgImage={DesktopBG} h={"100vh"} w={"full"}>
       <DesktopHeader />
-      {!collection && <HomePage />}
+      {collection === "home" && <HomePage />}
       {collection === "destination" && <DestinationsPage />}
       {collection === "crew" && <CrewPage />}
       {collection === "technology" && <TechnologiesPage />}
