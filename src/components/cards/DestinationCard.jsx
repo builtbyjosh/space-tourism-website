@@ -1,22 +1,27 @@
 import React from "react";
-import { Stack, Text, Heading, Divider } from "@chakra-ui/react";
+import { SimpleGrid, Stack, Text, Divider } from "@chakra-ui/react";
 
 const DestinationCard = ({ destinationData }) => {
   const { name, description, distance, travel } = destinationData;
-  console.log("destinationData: ", destinationData);
   return (
-    <Stack direction={"column"}>
-      <Heading as={"h2"}>{name}</Heading>
+    <Stack direction={"column"} textColor={"secondary"} textStyle={"primary"}>
+      <Text as={"h2"} fontSize={"h2"}>
+        {name}
+      </Text>
       <Text>{description}</Text>
       <Divider />
       <Stack direction={"row"}>
         <Stack>
           <Text>AVG. DISTANCE</Text>
-          <Heading as={"h5"}>{distance}</Heading>
+          <Text as={"h5"} fontSize={"h5"}>
+            {distance}
+          </Text>
         </Stack>
         <Stack>
           <Text>EST. TRAVEL TIME</Text>
-          <Heading as={"h5"}>{travel}</Heading>
+          <Text as={"h5"} fontSize={"h5"}>
+            {travel}
+          </Text>
         </Stack>
       </Stack>
     </Stack>

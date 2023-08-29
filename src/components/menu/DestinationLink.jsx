@@ -7,6 +7,8 @@ const DestinationLink = ({ text, index }) => {
   return (
     <Text
       cursor="pointer"
+      textColor={"secondary"}
+      textStyle={"primary"}
       textDecoration={index === collectionIndex ? "underline" : "none"}
       onClick={() => setCollectionIndex(index)}
     >
