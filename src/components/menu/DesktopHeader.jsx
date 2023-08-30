@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Image, Stack, Divider } from "@chakra-ui/react";
 import MenuLink from "./MenuLink";
-import logo from "../../assets/shared/logo.svg";
+import logo from "../../images/logo.svg";
 
 const DesktopHeader = () => {
   return (
