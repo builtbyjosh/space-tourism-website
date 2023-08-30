@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, Stack, Box, Circle, Heading } from "@chakra-ui/react";
-import DesktopBG from "../../assets/home/background-home-desktop.jpg";
+
 const HomePage = () => {
   return (
     <Box h={"full"} w={"full"}>
