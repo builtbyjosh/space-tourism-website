@@ -14,10 +14,8 @@ const DestinationsPage = () => {
     }
   }, [collectionData[collectionIndex]]);
 
-  console.log("IMG URL:", image);
-
   return (
-    <Stack direction={"row"}>
+    <Stack direction={"row"} p={10} spacing={10}>
       <Image src={image} />
       <Stack direction={"column"}>
         <Stack direction={"row"}>
