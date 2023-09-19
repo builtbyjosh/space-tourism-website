@@ -3,7 +3,7 @@ import { Text, Stack, Box, Circle, Heading } from "@chakra-ui/react";
 
 const HomePage = () => {
   return (
-    <Box h={"full"} w={"full"}>
+    <Box h={"100vh"} w={"full"}>
       <Stack direction={"row"}>
         <Stack
           direction={"column"}

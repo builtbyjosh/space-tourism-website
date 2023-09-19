@@ -15,7 +15,7 @@ const DestinationsPage = () => {
   }, [collectionData[collectionIndex]]);
 
   return (
-    <Stack direction={"row"} p={10} spacing={10}>
+    <Stack h={"100vh"} direction={"row"} p={10} spacing={10}>
       <Image src={image} />
       <Stack direction={"column"}>
         <Stack direction={"row"}>
