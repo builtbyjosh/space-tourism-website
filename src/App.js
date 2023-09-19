@@ -21,7 +21,13 @@ function App() {
   };
   const selectedBgImage = collectionMap[collection];
   return (
-    <Box bgImage={selectedBgImage} h={"100vh"} w={"full"}>
+    <Box
+      bgImage={selectedBgImage}
+      bgRepeat={"no-repeat"}
+      bgSize={"cover"}
+      h={"full"}
+      w={"full"}
+    >
       <DesktopHeader />
       <Box p={10}>
         {collection === "home" && <HomePage />}
