@@ -1,44 +1,34 @@
-import { useState, useEffect } from "react";
-import { useSpaceContext } from "../../context/SpaceContext";
+import { useState } from "react";
 import { Box, Image, Stack } from "@chakra-ui/react";
 import CrewCard from "../cards/CrewCard";
 import CrewButton from "../Buttons/CrewButton";
+import data from "../../data.json";
 
 const CrewPage = () => {
-  const { collectionData, collectionIndex, setCollectionIndex } =
-    useSpaceContext();
-  const [image, setImage] = useState();
+  const crewData = data["crew"];
+  const [crewIndex, setCrewIndex] = useState(0);
 
-  useEffect(() => {
-    if (collectionData[collectionIndex]) {
-      setImage(collectionData[collectionIndex].images.png);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [collectionData, collectionIndex]);
-
-  console.log("collectionIndex:", collectionIndex);
+  console.log(crewData);
 
   return (
     <Stack h={"100vh"} direction={"row"} spacing={10}>
       <Box width={"50%"}>
         <Stack>
-          {collectionData && (
-            <CrewCard crewMemberData={collectionData[collectionIndex]} />
-          )}
+          {crewData && <CrewCard crewMemberData={crewData[crewIndex]} />}
           <Stack direction={"row"} spacing={5}>
-            {collectionData.map((data, index) => (
+            {crewData.map((data, index) => (
               <CrewButton
                 key={index}
                 index={index}
-                active={collectionIndex === index}
-                onClick={() => setCollectionIndex(index)}
+                active={crewIndex === index}
+                onClick={() => setCrewIndex(index)}
               />
             ))}
           </Stack>
         </Stack>
       </Box>
       <Box width={"50%"}>
-        <Image src={image} />
+        <Image src={crewData[crewIndex].images.png} />
       </Box>
     </Stack>
   );
