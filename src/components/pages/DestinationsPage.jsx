@@ -1,33 +1,40 @@
-import { useEffect, useState } from "react";
-import { Box, Stack, Image } from "@chakra-ui/react";
+import { useState } from "react";
+import { Stack, Image, Text } from "@chakra-ui/react";
 import DestinationLink from "../menu/DestinationLink";
-import { useSpaceContext } from "../../context/SpaceContext";
 import DestinationCard from "../cards/DestinationCard";
+import data from "../../data.json";
 
 const DestinationsPage = () => {
-  const { collectionData, collectionIndex } = useSpaceContext();
-  const [image, setImage] = useState();
-
-  useEffect(() => {
-    if (collectionData[collectionIndex]) {
-      setImage(collectionData[collectionIndex].images.png);
-    }
-  }, [collectionData[collectionIndex]]);
+  const destinationData = data["destination"];
+  const [destinationIndex, setDestinationIndex] = useState(0);
 
   return (
     <Stack h={"100vh"} direction={"row"} p={10} spacing={10}>
-      <Image src={image} />
+      <Image src={destinationData[destinationIndex].images.png} />
       <Stack direction={"column"}>
         <Stack direction={"row"}>
-          {collectionData &&
-            collectionData.map((data, index) => {
+          {destinationData &&
+            destinationData.map((data, index) => {
               return (
-                <DestinationLink text={data.name} index={index} key={index} />
+                <Text
+                  key={index}
+                  cursor="pointer"
+                  textColor={"secondary"}
+                  textStyle={"primary"}
+                  textDecoration={
+                    index === destinationIndex ? "underline" : "none"
+                  }
+                  onClick={() => setDestinationIndex(index)}
+                >
+                  {data.name.toUpperCase()}
+                </Text>
               );
             })}
         </Stack>
-        {collectionData[collectionIndex] && (
-          <DestinationCard destinationData={collectionData[collectionIndex]} />
+        {destinationData && (
+          <DestinationCard
+            destinationData={destinationData[destinationIndex]}
+          />
         )}
       </Stack>
     </Stack>
