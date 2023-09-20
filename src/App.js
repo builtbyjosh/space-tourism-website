@@ -9,7 +9,7 @@ import HomeBg from "./images/home/background-home-desktop.jpg";
 import CrewBg from "./images/crew/background-crew-desktop.jpg";
 import DestinationBg from "./images/destination/background-destination-desktop.jpg";
 import TechnologyBg from "./images/technology/background-technology-desktop.jpg";
-
+import { Routes, Route } from "react-router-dom";
 function App() {
   const { collection, collectionIndex } = useSpaceContext();
 
@@ -29,12 +29,18 @@ function App() {
       w={"full"}
     >
       <DesktopHeader />
-      <Box p={10}>
+      {/* <Box p={10}>
         {collection === "home" && <HomePage />}
         {collection === "destination" && <DestinationsPage />}
         {collection === "crew" && <CrewPage />}
         {collection === "technology" && <TechnologiesPage />}
-      </Box>
+      </Box> */}
+      <Routes>
+        <Route path="/" exact Component={HomePage} />
+        <Route path="/destination" exact Component={DestinationsPage} />
+        <Route path="/crew" exact Component={CrewPage} />
+        <Route path="/technology" exact Component={TechnologiesPage} />
+      </Routes>
     </Box>
   );
 }
